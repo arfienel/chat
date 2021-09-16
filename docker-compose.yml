@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis
+    command:
+      - "redis-server"
+    ports:
+      - "6379:6379"
+  web:
+    build: .
+    command: python /home/makek/DWS/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/home/makek/DWS
+    ports:
+      - "8000:8000"
